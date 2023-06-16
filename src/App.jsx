@@ -8,22 +8,32 @@ function App() {
 
   useEffect(() => {
     fetch("http://localhost:3000/categories")
-    .then(response => response.json())
-    .then(data => {
-      console.log(data);
-      setResults(data);
-    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        setResults(data);
+      })
   }, [])
 
   return (
     <>
-      <div className="App">
-        {
-          results.map(d => (
-            <div key={d.id}>{d.title}</div>
-          ))
-        }
-      </div>
+      <header>E-Store</header>
+
+      <section>
+        <nav>
+          {
+            results.map(d => (
+              <div key={d.id}>{d.title}</div>
+            ))
+          }
+        </nav>
+        <article>
+          Main Area
+        </article>
+      </section>
+      <footer>
+        Footer
+      </footer>
     </>
   )
 }
