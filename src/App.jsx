@@ -2,18 +2,18 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import Category from './components/Category';
 
+import { fetcher } from './fetcher';
 
 function App() {
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/categories")
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-        setCategories(data);
-      })
+    const fetchData = async () => {
+      const data = await fetcher("/categories");
+      setCategories(data);
+    }
+    fetchData();
   }, [])
 
   const handleCategoryClick = id => {
