@@ -1,13 +1,14 @@
-import { ReactPropTypes } from 'react';
+import { PropTypes } from 'prop-types';
 
-const Category = ({ id, title }) => {
+const Category = ({ id, title, onCategoryClick }) => {
     return (
-        <div key={id}>{title}</div>
+        <div key={id} onClick={() => onCategoryClick(id)}>{title}</div>
     )
-};
+}
 
 Category.propTypes = {
-    id: ReactPropTypes.number,
-    title: ReactPropTypes.string
+    id: PropTypes.number,
+    title: PropTypes.string,
+    onCategoryClick: PropTypes.func
 }
 export default Category
