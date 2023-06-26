@@ -36,8 +36,8 @@ const CategoryProduct = ({ title, image, specs, features, price, stock }) => {
                 </div>
             </aside>
 
-            <aside className='category-product-finance'>
-                <div className='category-product-finance-price'>
+            <aside className='category-product-info-finance'>
+                <div className='category-product-info-finance-price'>
                     &pound;{price}
                 </div>
 
