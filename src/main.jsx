@@ -14,6 +14,7 @@ import {
 import ProductDetail from './components/ProductDetail';
 import Basket from './components/Basket.jsx';
 import Checkout from './components/Checkout.jsx';
+import Category from './components/Category.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -23,6 +24,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='basket' element={<Basket />} />
         <Route path='checkout' element={<Checkout />} />
         <Route path='products/:productId' element={<ProductDetail />} />
+        <Route path='categories/:categoryId' element={<Category />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
