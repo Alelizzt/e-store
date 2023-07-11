@@ -1,6 +1,9 @@
+import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+
+import { CartContext } from '../contexts/CartContext';
 
 const CategoryProduct = ({
     id,
@@ -12,6 +15,8 @@ const CategoryProduct = ({
     stock,
 }) => {
     const navigate = useNavigate();
+    const cartContext = useContext(CartContext);
+    const { addProduct } = cartContext;
 
     return (
         <ProductInfoArticle>
@@ -62,7 +67,7 @@ const CategoryProduct = ({
                     <ProductInfoActionButton onClick={() => navigate(`/products/${id}`)}>
                         View Product
                     </ProductInfoActionButton>
-                    <ProductInfoActionButton>Add to Basket</ProductInfoActionButton>
+                    <ProductInfoActionButton onClick={() => addProduct({ id, title, price })}>Add to Basket</ProductInfoActionButton>
                 </ProductInfoAction>
             </aside>
         </ProductInfoArticle>
