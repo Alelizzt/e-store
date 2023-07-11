@@ -1,7 +1,7 @@
 
 import { PropTypes } from 'prop-types';
 import { Link, Outlet } from 'react-router-dom'
-
+import { HomeIcon, CartIcon } from './icons';
 
 const Layout = ({ categories }) => {
     const renderCategories = () => {
@@ -13,7 +13,21 @@ const Layout = ({ categories }) => {
     }
     return (
         <>
-            <header>E-Store</header>
+            <header>
+                <div id="headerHomeIcon">
+                    <Link to='/'>
+                        <HomeIcon width={40} />
+                    </Link>
+                </div>
+                <div id="headerTittle">
+                    E-Store
+                </div>
+                <div id="headerCartIcon">
+                    <Link to='/basket'>
+                        <CartIcon width={40} />
+                    </Link>
+                </div>
+            </header>
 
             <section>
                 <nav>
