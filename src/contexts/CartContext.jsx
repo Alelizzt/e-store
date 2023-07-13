@@ -4,8 +4,8 @@ import { CartReducer } from './CartReducer';
 
 
 export const CartContext = createContext();
-const Storage = sessionStorage.getItem("cart")
-    ? JSON.parse(sessionStorage.getItem("cart"))
+const Storage = localStorage.getItem("cart")
+    ? JSON.parse(localStorage.getItem("cart"))
     : [];
 
 const initialState = { cartItems: Storage };
