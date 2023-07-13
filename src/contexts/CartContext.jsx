@@ -14,26 +14,31 @@ const CartContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(CartReducer, initialState);
 
     const addProduct = (payload) => {
-        dispatch({ type: 'ADD', payload })
+        dispatch({ type: 'ADD', payload });
+        return state.cartItems;
     }
 
     const removeProduct = (payload) => {
-        dispatch({ type: 'REMOVE', payload })
+        dispatch({ type: 'REMOVE', payload });
+        return state.cartItems;
     }
 
     const increaseQuantity = (payload) => {
-        dispatch({ type: 'INCREASE', payload })
+        dispatch({ type: 'INCREMENT', payload });
+        return state.cartItems;
     }
 
     const decreaseQuantity = (payload) => {
-        dispatch({ type: 'DECREASE', payload })
+        dispatch({ type: 'DECREMENT', payload });
+        return state.cartItems;
     }
 
     const clearBasket = () => {
-        dispatch({ type: 'CLEAR', payload: undefined })
+        dispatch({ type: 'CLEAR', payload: undefined });
+        return state.cartItems;
     }
 
-    const getCartItems = () => {
+    const getItems = () => {
         return state.cartItems;
     }
 
@@ -43,7 +48,7 @@ const CartContextProvider = ({ children }) => {
         increaseQuantity,
         decreaseQuantity,
         clearBasket,
-        getCartItems,
+        getItems,
         ...state
     }
 

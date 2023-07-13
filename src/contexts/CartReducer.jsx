@@ -12,12 +12,15 @@ export const CartReducer = (state, action) => {
         case "ADD":
         case "INCREMENT":
             if (index === -1) {
-                newItems.push({ ...action.payload, quantity: 1 })
+                newItems.push({ ...action.payload, quantity: 1 });
+                break;
             }
-            /*else {
-                newItems[index].quantity++;
-            }*/
+            else {
+                //newItems[index].quantity++;
+                newItems[index] = { ...newItems[index], quantity: newItems[index].quantity + 1 };
+            }
             break;
+
         case "REMOVE":
             if (index > -1) {
                 //state.cartItems.splice(index, 1);
@@ -26,6 +29,7 @@ export const CartReducer = (state, action) => {
             break;
         case "DECREMENT":
             if (index > -1) {
+                //newItems[index].quantity--;
                 newItems[index] = { ...newItems[index], quantity: newItems[index].quantity - 1 };
             }
             break;
@@ -33,11 +37,13 @@ export const CartReducer = (state, action) => {
             newItems = [];
             break;
         default:
-
+            break;
     }
-    state.cartItems = newItems;
-    localStorage.setItem("cartItems", JSON.stringify(newItems));
+
+    //state.cartItems = newItems;
+    const newState = { ...state, cartItems: newItems };
+    sessionStorage.setItem("cartItems", JSON.stringify(newItems));
 
 
-    return state;
+    return newState;
 }
