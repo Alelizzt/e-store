@@ -185,6 +185,9 @@ const ProductInfoActionButton = styled.button`
     background-color: lightgray;
     border: solid 1px slategrey;
     font-weight: bold;
+    &:hover {
+        cursor: pointer;
+    }
 `;
 
 const ProductInfoFinancePrice = styled.div`
