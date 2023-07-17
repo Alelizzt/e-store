@@ -7,9 +7,7 @@ import { useNavigate } from "react-router-dom";
 const Checkout = () => {
     const navigate = useNavigate();
 
-    const confirmOrder = () => {
-        navigate('/orderconfirmation');
-    };
+
 
     const [form, setForm] = useState({
         name: "",
@@ -28,7 +26,8 @@ const Checkout = () => {
         email: form.email.length === 0,
         shippingAddress1: form.shippingAddress1.length === 0,
     };
-    const disabled = Object.keys(errors).some((x) => errors[x]);
+
+    const disabled = Object.keys(errors).every((x) => errors[x]);
 
     const handleChange = (ev) => {
         const { name, value } = ev.target;
@@ -78,7 +77,7 @@ const Checkout = () => {
 
                     {/* Row 6 */}
                     <CheckoutTable>
-                        <CheckoutFormLabel>Name</CheckoutFormLabel>
+                        <CheckoutFormLabel>Name *</CheckoutFormLabel>
                         <CheckoutInput
                             type="text"
                             name="name"
@@ -87,12 +86,13 @@ const Checkout = () => {
                             onBlur={handleBlur}
                             placeholder="Enter name"
                         />
-                        <CheckoutFormLabel>Email</CheckoutFormLabel>
+                        <CheckoutFormLabel>Email *</CheckoutFormLabel>
                         <CheckoutInput
                             type="text"
                             name="email"
                             invalid={showError("email")}
                             onChange={handleChange}
+                            onBlur={handleBlur}
                             placeholder="Enter email"
                         />
                     </CheckoutTable>
@@ -121,7 +121,7 @@ const Checkout = () => {
                             <input type="text" name="billingCity" />
                         </CheckoutAddress>
 
-                        <CheckoutFormLabel>Shipping Address</CheckoutFormLabel>
+                        <CheckoutFormLabel>Shipping Address *</CheckoutFormLabel>
 
                         <CheckoutAddress>
                             <CheckoutInput
@@ -129,6 +129,7 @@ const Checkout = () => {
                                 name="shippingAddress1"
                                 invalid={showError("shippingAddress1")}
                                 placeholder="Enter first address line"
+                                onBlur={handleBlur}
                             />
                             <input type="text" name="shippingAddress2" />
                             <input type="text" name="shippingCity" />
@@ -139,7 +140,7 @@ const Checkout = () => {
                         Cancel
                     </CancelButton>
 
-                    <CheckoutButton onClick={confirmOrder}>
+                    <CheckoutButton disabled={disabled}>
                         Confirm Order
                     </CheckoutButton>
                 </CheckoutContainer>
