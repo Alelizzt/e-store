@@ -130,6 +130,9 @@ const BasketQty = styled.h3`
     font-weight: bold;
     display: grid;
     grid-template-columns: 0.1fr 0.05fr 0.1fr 0.1fr;
+    &:hover {
+        cursor: pointer;
+    }
 `;
 
 const BasketPrice = styled.h3`
@@ -144,4 +147,7 @@ const BasketTotal = styled.h2`
 const BasketButton = styled.button`
   border-radius: 8px;
   height: 40px;
+  &:hover {
+        cursor: pointer;
+    }
 `;
