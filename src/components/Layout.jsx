@@ -2,6 +2,7 @@
 import { PropTypes } from 'prop-types';
 import { Link, Outlet } from 'react-router-dom'
 import { HomeIcon, CartIcon } from './icons';
+import Search from './Search';
 
 const Layout = ({ categories }) => {
     const renderCategories = () => {
@@ -19,6 +20,7 @@ const Layout = ({ categories }) => {
                         <HomeIcon width={40} />
                     </Link>
                 </div>
+                <Search />
                 <div id="headerTittle">
                     E-Store
                 </div>
