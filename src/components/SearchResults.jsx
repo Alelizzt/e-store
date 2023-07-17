@@ -20,18 +20,23 @@ const SearchResults = () => {
     }, [query]);
 
     const renderProducts = () => {
-        return products.data.map((product) => (
-            <CategoryProduct key={product.id} {...product}>
-                {product.title}
-            </CategoryProduct>
-        ));
+        if (products.data.length > 0) {
+            return products.data.map((product) => (
+                <CategoryProduct key={product.id} {...product}>
+                    {product.title}
+                </CategoryProduct>
+            ));
+        }
+        else {
+            return <div> No Results found!</div>
+        }
     };
 
     return (
         <div>
             {products.errorMessage && (<div> Error: {products.errorMessage}</div>)}
 
-            {products && renderProducts()}
+            {renderProducts()}
         </div>
     )
 }
