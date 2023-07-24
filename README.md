@@ -9,6 +9,12 @@ _This project was thinked to run on remote server, the commands here works fine 
 </p>
 <br/>
 
+Initialize project by fist time
+~~~bash
+yarn install
+~~~
+
+
 Start testing database
 
 ~~~bash
